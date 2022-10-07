@@ -7,10 +7,10 @@ const In = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 2rem;
-  padding: 30px 0;
+  padding: 45px 0 30px;
   input {
     width: 85%;
-    padding: 10px;
+    padding: 15px;
     border: none;
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
@@ -50,7 +50,7 @@ function Input() {
       <In>
         <input type="search" placeholder="  🔍   Search for a country...  " />
         <select name="Filter by Region" aria-label="Filter by Region">
-          <option class="zero" value="">
+          <option className="zero" value="">
             Filter by Region
           </option>
           <option value="africa">Africa</option>

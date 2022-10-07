@@ -2,9 +2,16 @@ import React from "react";
 import styled from "styled-components";
 
 const Car = styled.article`
-  width: 80%;
-  border: 0.2px solid black;
+  width: 270px;
+  min-width: 270px;
+  /* border: 0.2px solid black; */
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   border-radius: 7px;
+  margin: 3rem auto;
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    cursor: pointer;
+  }
   .Container {
     padding: 1rem;
   }
@@ -12,8 +19,15 @@ const Car = styled.article`
     display: flex;
     gap: 1rem;
   }
+  img {
+    width: 270px;
+    height: 180px;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+  }
   h2 {
     margin: 1rem 0;
+    font-size: 19px;
   }
 `;
 function Card({ Imagen, Pais, Population, Region, Capital }) {
