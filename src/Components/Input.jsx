@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
+import { cambiarSearcherAction } from "../actions/searcherAction";
+import { useDispatch, useSelector } from "react-redux";
 
 const In = styled.div`
   width: 100%;
@@ -44,12 +46,45 @@ const In = styled.div`
     }
   }
 `;
-function Input() {
+function Input({ actualizarregion }) {
+  //referencia input
+  const insearch = useRef(null);
+  //referencia select
+  const sele = useRef(null);
+  // utilizar usedispatch y te crea una funcion
+  const dispatch = useDispatch();
+  // mando a llamar la funcion desde dispatch
+  const actualizarFlags = (nombre) => dispatch(cambiarSearcherAction(nombre));
+  //actualizo las banderas cada vez que escribo algo en el input
+  const actualizar = (e) => {
+    e.preventDefault();
+    actualizarFlags(e.target.value);
+    sele.current.value = "";
+    actualizarregion();
+  };
+  const actualizarreg = (e) => {
+    actualizarregion(e);
+    if (e.target.value !== "") {
+      insearch.current.value = "";
+      actualizarFlags("");
+    }
+  };
+
   return (
     <>
       <In>
-        <input type="search" placeholder="  🔍   Search for a country...  " />
-        <select name="Filter by Region" aria-label="Filter by Region">
+        <input
+          ref={insearch}
+          type="search"
+          placeholder="  🔍   Search for a country...  "
+          onChange={actualizar}
+        />
+        <select
+          ref={sele}
+          name="Filter by Region"
+          aria-label="Filter by Region"
+          onChange={(e) => actualizarreg(e)}
+        >
           <option className="zero" value="">
             Filter by Region
           </option>

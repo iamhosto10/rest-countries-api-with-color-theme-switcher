@@ -3,6 +3,9 @@ import Input from "./Components/Input";
 import Navbar from "./Components/Navbar";
 import styled from "styled-components";
 import Cards from "./Components/Cards";
+import { Provider } from "react-redux";
+import store from "./store";
+import { useState } from "react";
 
 const Main = styled.main`
   /* padding: 50px 8vw 0 8vw; */
@@ -11,14 +14,22 @@ const Main = styled.main`
 `;
 
 function App() {
+  const [region, setRegion] = useState("");
+  const actualizarregion = (e) => {
+    if (e) {
+      setRegion(e.target.value);
+    } else {
+      setRegion("");
+    }
+  };
   return (
-    <>
+    <Provider store={store}>
       <Navbar />
       <Main>
-        <Input />
-        <Cards />
+        <Input actualizarregion={actualizarregion} />
+        <Cards region={region} />
       </Main>
-    </>
+    </Provider>
   );
 }
 

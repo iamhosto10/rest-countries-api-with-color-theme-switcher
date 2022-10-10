@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Card from "./Card";
-import APIRest from "../Functions/APIRest";
+import { useDispatch, useSelector } from "react-redux";
+import { obtenerDatos } from "../actions/searcherAction";
+import APIRestSearch from "../Functions/APIRestSearch";
 
 const Container = styled.div`
   @media (min-width: 768px) {
@@ -11,14 +13,25 @@ const Container = styled.div`
     gap: 4rem;
   }
 `;
-function Cards() {
+function Cards({ region }) {
+  const dispatch = useDispatch();
+
   const [paises, setPaises] = useState();
+
+  //obetener el state
+  const state1 = useSelector((state) => state.search.searcher);
+  console.log(state1);
+
+  // useeffect
+
   useEffect(() => {
-    async function API() {
-      setPaises(await APIRest());
+    async function API2() {
+      try {
+        setPaises(await APIRestSearch(state1, region));
+      } catch (error) {}
     }
-    API();
-  }, []);
+    API2();
+  }, [state1, region]);
 
   return (
     <>
@@ -34,8 +47,7 @@ function Cards() {
                 Capital={p ? p["capital"] : ""}
               />
             ))
-          : null}
-        ;
+          : "no hay paises que coincidan en esa busqueda"}
       </Container>
     </>
   );
