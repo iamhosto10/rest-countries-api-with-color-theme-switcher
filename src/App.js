@@ -1,20 +1,17 @@
 import "./App.css";
 import Input from "./Components/Input";
 import Navbar from "./Components/Navbar";
-import styled from "styled-components";
 import Cards from "./Components/Cards";
 import { Provider } from "react-redux";
 import store from "./store";
 import { useState } from "react";
-
-const Main = styled.main`
-  /* padding: 50px 8vw 0 8vw; */
-
-  /* box-shadow: 0 -2px 1px gray; */
-`;
+import Themes from "./Theme/Themes";
+import { ThemeProvider } from "styled-components";
+import { Main } from "./Cover/Cover.elements";
 
 function App() {
   const [region, setRegion] = useState("");
+  const [tema, setTema] = useState("light");
   const actualizarregion = (e) => {
     if (e) {
       setRegion(e.target.value);
@@ -24,11 +21,13 @@ function App() {
   };
   return (
     <Provider store={store}>
-      <Navbar />
-      <Main>
-        <Input actualizarregion={actualizarregion} />
-        <Cards region={region} />
-      </Main>
+      <ThemeProvider theme={Themes[tema]}>
+        <Navbar tema={tema} setTema={setTema} />
+        <Main>
+          <Input actualizarregion={actualizarregion} />
+          <Cards region={region} />
+        </Main>
+      </ThemeProvider>
     </Provider>
   );
 }

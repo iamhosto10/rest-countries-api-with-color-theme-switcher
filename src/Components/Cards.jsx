@@ -1,18 +1,10 @@
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
 import Card from "./Card";
 import { useDispatch, useSelector } from "react-redux";
 import { obtenerDatos } from "../actions/searcherAction";
 import APIRestSearch from "../Functions/APIRestSearch";
+import { Container } from "../Cover/Cover.elements";
 
-const Container = styled.div`
-  @media (min-width: 768px) {
-    padding: 0 9rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4rem;
-  }
-`;
 function Cards({ region }) {
   const dispatch = useDispatch();
 
