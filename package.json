@@ -2,7 +2,7 @@
   "name": "rest-countries-api-with-color-heme-switcher",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://iamhosto10.github.io/rest-countries-api-with-color-theme-switcher",
+  "homepage": "https://iamhosto10.github.io/rest-countries-api-with-color-theme-switcher/",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.2.0",
     "@fortawesome/free-solid-svg-icons": "^6.2.0",
