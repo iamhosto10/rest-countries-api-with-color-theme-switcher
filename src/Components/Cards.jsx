@@ -5,7 +5,7 @@ import { obtenerDatos } from "../actions/searcherAction";
 import APIRestSearch from "../Functions/APIRestSearch";
 import { Container } from "../Cover/Cover.elements";
 
-function Cards({ region }) {
+function Cards({ region, details, setDetails, setCountry }) {
   const dispatch = useDispatch();
 
   const [paises, setPaises] = useState();
@@ -37,6 +37,9 @@ function Cards({ region }) {
                 Population={p ? p["population"] : ""}
                 Region={p ? p["region"] : ""}
                 Capital={p ? p["capital"] : ""}
+                details={details}
+                setDetails={setDetails}
+                setCountry={setCountry}
               />
             ))
           : "no hay paises que coincidan en esa busqueda"}

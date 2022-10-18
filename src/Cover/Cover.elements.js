@@ -181,4 +181,70 @@ export const Car = styled.article`
   }
 `;
 
-export const Detail = styled.section``;
+export const Detail = styled.section`
+  padding: 45px 0 30px;
+  button {
+    padding: 10px 45px;
+    margin: 3% 10%;
+    border: none;
+    border-radius: 5px;
+    background-color: ${({ theme }) => theme.white};
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    color: ${({ theme }) => theme.dark_blue};
+    &:hover {
+      box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+        rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+      cursor: pointer;
+    }
+  }
+  article {
+    padding: 45px 0 30px;
+    text-align: center;
+    color: ${({ theme }) => theme.dark_blue};
+
+    img {
+      width: 70%;
+      max-width: 500px;
+    }
+    h2 {
+      margin: 1rem 0;
+      font-size: 24px;
+      font-weight: 700;
+    }
+    h3 {
+      font-size: 16px;
+      font-weight: 700;
+    }
+    h4 {
+      font-size: 16px;
+      font-weight: 400;
+    }
+    .flex {
+      display: flex;
+      gap: 1rem;
+      margin: 3% 0;
+    }
+    .detail-container {
+      padding: 10px 15% 30px;
+      text-align: left;
+    }
+    .more-detail {
+      margin-top: 0;
+      padding: 10px 15% 30px;
+      text-align: left;
+    }
+    .border-countries {
+      margin-top: 9%;
+      .border-countries-button {
+        width: 100%;
+        box-sizing: border-box;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+      button {
+        padding: 2px 1rem;
+      }
+    }
+  }
+`;

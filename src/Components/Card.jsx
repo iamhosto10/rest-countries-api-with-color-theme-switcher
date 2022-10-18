@@ -2,10 +2,24 @@ import React from "react";
 import styled from "styled-components";
 import { Car } from "../Cover/Cover.elements";
 
-function Card({ Imagen, Pais, Population, Region, Capital }) {
+function Card({
+  Imagen,
+  Pais,
+  Population,
+  Region,
+  Capital,
+  details,
+  setDetails,
+  setCountry,
+}) {
+  const click = () => {
+    setDetails(!details);
+    setCountry(Pais);
+    console.log(Pais);
+  };
   return (
     <>
-      <Car>
+      <Car onClick={click}>
         <img src={Imagen} alt={Pais} />
         <div className="Container">
           <h2 className="Pais">{Pais}</h2>
