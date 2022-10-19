@@ -16,13 +16,13 @@ function DetailCard({ details, setDetails, country, setCountry }) {
     <>
       <Detail>
         <button onClick={() => setDetails(!details)}> &lt;- Back Home</button>
-        <article className="Flex">
+        <article>
           <img
             src={selected ? selected[0]["flags"]["png"] : ""}
             alt={selected ? selected[0]["name"]["common"] : " "}
           />
+          <h2>{selected ? selected[0]["name"]["common"] : " "}</h2>
           <div className="detail-container">
-            <h2>{selected ? selected[0]["name"]["common"] : " "}</h2>
             <div className="flex">
               <h3>Native-name:</h3>
               <h4>
@@ -77,10 +77,12 @@ function DetailCard({ details, setDetails, country, setCountry }) {
                   : " "}
               </h4>
             </div>
-            <section className="border-countries">
-              <h3> Border Countries: </h3>
-              <div className="border-countries-button">
-                {selected
+          </div>
+          <section className="border-countries">
+            <h3> Border Countries: </h3>
+            <div className="border-countries-button">
+              {selected
+                ? selected[0].borders
                   ? selected[0].borders.map((e, index) => (
                       <button
                         key={index}
@@ -90,11 +92,11 @@ function DetailCard({ details, setDetails, country, setCountry }) {
                         {e}{" "}
                       </button>
                     ))
-                  : ""}
-              </div>
-              {/* <button onClick={() => setCountry("Colombia")}>Hola</button> */}
-            </section>
-          </div>
+                  : "No border countries"
+                : "No border countries"}
+            </div>
+            {/* <button onClick={() => setCountry("Colombia")}>Hola</button> */}
+          </section>
         </article>
       </Detail>
     </>
